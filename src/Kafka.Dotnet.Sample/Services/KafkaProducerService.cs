@@ -99,7 +99,7 @@ namespace Kafka.Dotnet.Sample.Services
                                 Key = _kafkaConfiguration.Key,
                                 Value = Convert.ToBase64String(LZ4Codec.Wrap(Encoding.UTF8.GetBytes(json)))
                             };
-                            await _producer.ProduceAsync(_kafkaConfiguration.Topic, msg).ConfigureAwait(false);
+                            await _producer.ProduceAsync(_kafkaConfiguration.Topic, msg, cancellationToken).ConfigureAwait(false);
                         }
                     }
                 }
